@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Bottom Menu - ตัวอย่างง่าย ๆ</title>
+    <style>
+        /* รีเซ็ต CSS พื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding-bottom: 70px; /* เว้นพื้นที่ให้เมนู */
+        }
+
+        /* เนื้อหาหลัก */
+        .content {
+            padding: 20px;
+            background: #f5f5f5;
+            min-height: 200vh; /* ทำให้หน้ายาวพอที่จะเลื่อนได้ */
+        }
+
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* ★ หลักการสำคัญ: เมนูด้านล่างแบบ Sticky ★ */
+        .sticky-menu {
+            position: fixed;   /* ★ คีย์หลัก: ลอยอยู่ในตำแหน่งเดิม */
+            bottom: 0;         /* ★ ติดด้านล่าง */
+            left: 0;           /* ★ เริ่มจากซ้าย */
+            right: 0;          /* ★ ไปจนสุดขวา */
+            width: 100%;       /* กว้างเต็มหน้าจอ */
+            background: #fff;  /* พื้นหลังสีขาว */
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* เงา */
+            z-index: 1000;     /* ★ อยู่ด้านบนสุด */
+        }
+
+        .menu-items {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #666;
+            padding: 8px;
+            transition: color 0.3s;
+        }
+
+        .menu-item:hover {
+            color: #007bff;
+        }
+
+        .menu-item.active {
+            color: #007bff;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            background: currentColor;
+        }
+
+        /* ไอคอนแบบง่าย ๆ ด้วย CSS */
+        .icon-home {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .icon-search {
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            background: transparent;
+            position: relative;
+        }
+
+        .icon-search::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background: currentColor;
+            transform: rotate(45deg);
+            bottom: -4px;
+            right: -4px;
+        }
+
+        .icon-heart {
+            background: currentColor;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(-45deg);
+            border-radius: 50% 0;
+        }
+
+        .icon-heart::before {
+            content: '';
+            background: currentColor;
+            width: 20px;
+            height: 18px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            border-radius: 50% 0;
+            transform: rotate(90deg);
+        }
+
+        .icon-cart {
+            border: 2px solid currentColor;
+            border-radius: 2px;
+            background: transparent;
+            position: relative;
+        }
+
+        .icon-cart::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background: currentColor;
+            top: -6px;
+            left: 6px;
+        }
+
+        .text {
+            font-size: 12px;
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        /* สไตล์เพิ่มเติม */
+        .highlight {
+            background: #fffacd;
+            padding: 15px;
+            border-left: 4px solid #ffd700;
+            margin: 20px 0;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🎯 วิธีทำเมนูด้านล่างแบบ Sticky (ลอยอยู่)</h1>
+        
+        <div class="highlight">
+            <h3>💡 หลักการสำคัญ:</h3>
+            <p>ใช้ <code>position: fixed</code> + <code>bottom: 0</code> + <code>z-index: 1000</code></p>
+        </div>
+
+        <div class="section">
+            <h2>1. CSS หลักที่ต้องใช้</h2>
+            <pre><code>.sticky-menu {
+    position: fixed;   /* ★ ลอยอยู่ในตำแหน่งเดิม */
+    bottom: 0;         /* ★ ติดด้านล่าง */
+    left: 0;           /* ★ เริ่มจากซ้าย */
+    right: 0;          /* ★ ไปจนสุดขวา */
+    width: 100%;       /* กว้างเต็มหน้าจอ */
+    z-index: 1000;     /* ★ อยู่ด้านบนสุด */
+}</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>2. ป้องกันเนื้อหาซ้อนกับเมนู</h2>
+            <pre><code>body {
+    padding-bottom: 70px; /* เว้นพื้นที่ให้เมนู */
+}</code></pre>
+            <p>เพิ่ม <code>padding-bottom</code> ใน body เพื่อไม่ให้เนื้อหาซ้อนกับเมนู</p>
+        </div>
+
+        <div class="section">
+            <h2>3. โครงสร้าง HTML</h2>
+            <pre><code>&lt;nav class="sticky-menu"&gt;
+    &lt;div class="menu-items"&gt;
+        &lt;a href="#" class="menu-item active"&gt;
+            &lt;div class="icon icon-home"&gt;&lt;/div&gt;
+            &lt;span class="text"&gt;หน้าแรก&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;!-- เมนูอื่น ๆ --&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>4. JavaScript เบื้องต้น</h2>
+            <pre><code>// เปลี่ยนสถานะ active
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // เอา active ออกจากทุกรายการ
+        document.querySelectorAll('.menu-item').forEach(menu => {
+            menu.classList.remove('active');
+        });
+        
+        // เพิ่ม active ให้รายการที่ถูกคลิก
+        this.classList.add('active');
+    });
+});</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>5. เคล็ดลับเพิ่มเติม</h2>
+            <ul>
+                <li>ใช้ <code>box-shadow</code> เพื่อสร้างเงา</li>
+                <li>ใช้ <code>transition</code> สำหรับการเปลี่ยนแปลงที่นุ่มนวล</li>
+                <li>ใช้ <code>backdrop-filter</code> สำหรับเอฟเฟกต์เบลอ</li>
+                <li>รองรับ <code>safe-area-inset-bottom</code> สำหรับมือถือรุ่นใหม่</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. ทดสอบการเลื่อน</h2>
+            <p>เลื่อนหน้าเว็บขึ้นลงเพื่อดูว่าเมนูด้านล่างยังคงลอยอยู่ในตำแหน่งเดิม</p>
+            <p>✅ เมนูจะไม่หายไปแม้ว่าจะเลื่อนไปที่ไหนก็ตาม</p>
+            <p>✅ เมนูจะอยู่ด้านบนสุดเสมอ (z-index)</p>
+            <p>✅ เมนูจะกว้างเต็มหน้าจอ</p>
+        </div>
+
+        <!-- เนื้อหาเพิ่มเติมเพื่อทดสอบการเลื่อน -->
+        <div class="section">
+            <h2>เนื้อหาทดสอบ 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        </div>
+
+        <div class="section">
+            <h2>เนื้อหาทดสอบ 2</h2>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        </div>
+
+        <div class="section">
+            <h2>เนื้อหาทดสอบ 3</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco...</p>
+        </div>
+
+        <div class="section">
+            <h2>เนื้อหาทดสอบ 4</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse...</p>
+        </div>
+
+        <div class="section">
+            <h2>เนื้อหาสุดท้าย</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa...</p>
+        </div>
+    </div>
+
+    <!-- ★ เมนูด้านล่างแบบ Sticky ★ -->
+    <nav class="sticky-menu">
+        <div class="menu-items">
+            <a href="#" class="menu-item active">
+                <div class="icon icon-home"></div>
+                <span class="text">หน้าแรก</span>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="icon icon-search"></div>
+                <span class="text">ค้นหา</span>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="icon icon-heart"></div>
+                <span class="text">รายการโปรด</span>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="icon icon-cart"></div>
+                <span class="text">รถเข็น</span>
+                <span class="badge">2</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // JavaScript เบื้องต้นสำหรับจัดการเมนู
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // เอา active class ออกจากทุกรายการ
+                    menuItems.forEach(menuItem => {
+                        menuItem.classList.remove('active');
+                    });
+                    
+                    // เพิ่ม active class ให้กับรายการที่ถูกคลิก
+                    this.classList.add('active');
+                    
+                    console.log('คลิกเมนู:', this.querySelector('.text').textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

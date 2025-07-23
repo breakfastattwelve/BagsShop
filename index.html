@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Bottom Menu - Clean Version</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- เนื้อหาหลัก -->
+    <main class="main-content">
+        <h1>ตัวอย่างเมนูด้านล่างแบบ Sticky</h1>
+        <p>เลื่อนหน้าเว็บเพื่อดูว่าเมนูด้านล่างยังคงลอยอยู่ในตำแหน่งเดิม</p>
+        
+        <div class="content-section">
+            <h2>หลักการทำงาน</h2>
+            <p><strong>position: fixed</strong> - คุณสมบัติหลักที่ทำให้เมนูลอยอยู่ในตำแหน่งเดิม</p>
+            <p><strong>bottom: 0</strong> - กำหนดให้ติดด้านล่างของหน้าจอ</p>
+            <p><strong>z-index: 1000</strong> - ให้เมนูอยู่ด้านบนสุดเสมอ</p>
+        </div>
+
+        <div class="content-section">
+            <h2>ฟีเจอร์เพิ่มเติม</h2>
+            <ul>
+                <li>รองรับ Responsive Design</li>
+                <li>เอฟเฟกต์ Ripple เมื่อคลิก</li>
+                <li>Badge สำหรับจำนวนสินค้า</li>
+                <li>Transition แบบ Smooth</li>
+                <li>รองรับ Safe Area สำหรับมือถือ</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>CSS ที่สำคัญ</h2>
+            <pre><code>.bottom-navigation {
+    position: fixed;    /* คีย์หลัก */
+    bottom: 0;          /* ติดด้านล่าง */
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;      /* อยู่ด้านบนสุด */
+}</code></pre>
+        </div>
+
+        <div class="content-section">
+            <h2>JavaScript Functionality</h2>
+            <p>JavaScript จัดการ:</p>
+            <ul>
+                <li>การเปลี่ยน Active State</li>
+                <li>การนำทางระหว่างหน้า</li>
+                <li>การอัพเดท Badge</li>
+                <li>เอฟเฟกต์ต่าง ๆ</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>ทดสอบการทำงาน</h2>
+            <p>ลองคลิกที่เมนูด้านล่างเพื่อดูเอฟเฟกต์ต่าง ๆ</p>
+            <button onclick="BottomNavUtils.showNotification('ทดสอบการแจ้งเตือน!', 'success')">
+                แสดงการแจ้งเตือน
+            </button>
+            <button onclick="BottomNavUtils.updateBadge(Math.floor(Math.random() * 10))">
+                อัพเดท Badge แบบสุ่ม
+            </button>
+        </div>
+
+        <!-- เพิ่มเนื้อหาเพื่อทดสอบการเลื่อน -->
+        <div class="content-section">
+            <h2>เนื้อหาเพิ่มเติม 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>เนื้อหาเพิ่มเติม 2</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>เนื้อหาเพิ่มเติม 3</h2>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>เนื้อหาเพิ่มเติม 4</h2>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>เนื้อหาสุดท้าย</h2>
+            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        </div>
+    </main>
+
+    <!-- เมนูด้านล่างแบบ Sticky -->
+    <nav class="bottom-navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon home"></div>
+                <span class="nav-text">หน้าแรก</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <div class="nav-icon search"></div>
+                <span class="nav-text">ค้นหา</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <div class="nav-icon heart"></div>
+                <span class="nav-text">รายการโปรด</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <div class="nav-icon cart"></div>
+                <span class="nav-text">รถเข็น</span>
+                <span class="badge">3</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

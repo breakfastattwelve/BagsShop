@@ -1,0 +1,172 @@
+/* รีเซ็ต CSS พื้นฐาน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding-bottom: 80px; /* เว้นพื้นที่ให้กับเมนูด้านล่าง */
+}
+
+/* ส่วนหลักของ Sticky Bottom Menu */
+.bottom-navigation {
+    position: fixed; /* คีย์หลัก: ใช้ fixed position */
+    bottom: 0;       /* ติดด้านล่าง */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e1e5e9;
+    z-index: 1000;   /* ให้อยู่ด้านบนสุดเสมอ */
+    backdrop-filter: blur(10px); /* เอฟเฟกต์เบลอพื้นหลัง */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #8e8e93;
+    padding: 6px 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+    flex: 1;
+    max-width: 75px;
+}
+
+.nav-item:hover {
+    color: #007AFF;
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.nav-item.active {
+    color: #007AFF;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+    background: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.nav-text {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ไอคอน SVG Icons */
+.nav-icon.home {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'/%3E%3C/svg%3E");
+}
+
+.nav-icon.search {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E");
+}
+
+.nav-icon.heart {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'/%3E%3C/svg%3E");
+}
+
+.nav-icon.cart {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L6 5H4M7 13v8a2 2 0 002 2h8a2 2 0 002-2v-8m-4 4v4'/%3E%3C/svg%3E");
+}
+
+/* Badge สำหรับจำนวนสินค้าในรถเข็น */
+.badge {
+    position: absolute;
+    top: -2px;
+    right: 6px;
+    background: #ff3b30;
+    color: white;
+    border-radius: 10px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid white;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 6px 8px;
+    }
+    
+    .nav-item {
+        padding: 4px 8px;
+    }
+    
+    .nav-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .nav-text {
+        font-size: 9px;
+    }
+}
+
+/* สำหรับอุปกรณ์ที่มีพื้นที่ปลอดภัยด้านล่าง (เช่น iPhone X) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .bottom-navigation {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* เอฟเฟกต์เพิ่มเติม */
+.nav-item.active .nav-icon {
+    transform: scale(1.1);
+}
+
+.nav-item:active {
+    transform: scale(0.95);
+}
+
+/* สำหรับเนื้อหาหลัก */
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section {
+    margin-bottom: 40px;
+    padding: 24px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.content-section h2 {
+    color: #495057;
+    margin-bottom: 16px;
+}
+
+.content-section p {
+    color: #6c757d;
+    line-height: 1.6;
+}
