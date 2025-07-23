@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Bottom Navigation</title>
+    <link rel="stylesheet" href="styles-advanced.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- เนื้อหาหลักของเว็บ -->
+    <div class="content">
+        <h1>Bottom Navigation ขั้นสูง</h1>
+        <p>มีฟีเจอร์ active state, animation และ interaction</p>
+        
+        <!-- เพิ่มเนื้อหาเพื่อให้สามารถ scroll ได้ -->
+        <div style="height: 1500px;">
+            <h2>คุณสมบัติ:</h2>
+            <ul>
+                <li>เมนูติดอยู่ด้านล่างตลอดเวลาเมื่อ scroll</li>
+                <li>มี active state เมื่อเลือกเมนู</li>
+                <li>มี animation เมื่อ click</li>
+                <li>แสดง/ซ่อนเมนูเมื่อ scroll ขึ้น/ลง</li>
+                <li>Responsive design</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Menu -->
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="#home" class="nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>หน้าแรก</span>
+        </a>
+        <a href="#search" class="nav-item" data-page="search">
+            <i class="fas fa-search"></i>
+            <span>ค้นหา</span>
+        </a>
+        <a href="#favorites" class="nav-item" data-page="favorites">
+            <i class="fas fa-heart"></i>
+            <span>ถูกใจ</span>
+        </a>
+        <a href="#cart" class="nav-item" data-page="cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge">2</span>
+            <span>ตะกร้า</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
