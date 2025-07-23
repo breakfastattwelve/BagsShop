@@ -29,10 +29,10 @@ function Header() {
 
           {/* Navigation Arrows */}
           <div className="absolute bottom-6 right-6 flex gap-2 z-10">
-            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:bg-blue-300 transition-all">
+            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:scale-80 transition-transform duration-300">
               <img src={arrowLeft} alt="Previous" className="" />
             </button>
-            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:bg-blue-300 transition-all">
+            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:scale-80 transition-transform duration-300">
               <img src={arrowRight} alt="Next" />
             </button>
           </div>
