@@ -1,43 +1,29 @@
-import bagHeader from "../assets/bag_header.png";
-import arrowRight from "../assets/rightArrow.png";
-import arrowLeft from "../assets/leftArrow.png";
-
-
 function Header() {
   return (
-    <div className="bg-white">
-      <div className="container mx-auto max-w-[1320px] relative p-10">
-        
-        {/* Main Image */}
-        <div className="relative w-full h-[500px] overflow-hidden rounded-xl">
-          <img 
-            src={bagHeader} 
-            alt="bagHeader" 
-            className="w-full h-full object-cover"
-          />
-          
-          {/* Text Overlay*/}
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <div className="bg-white/95 backdrop-blur-sm p-6 rounded-lg shadow-lg">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                This<br />
-                season's<br />
-                latest
-              </h1>
-            </div>
-          </div>
+    <div>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Products</h2>
+        <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+          Discover our exclusive collection
+        </p>
+        <div className="w-24 h-1 bg-black mx-auto mt-6"></div>
+      </div>
 
-          {/* Navigation Arrows */}
-          <div className="absolute bottom-6 right-6 flex gap-2 z-10">
-            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:scale-80 transition-transform duration-300">
-              <img src={arrowLeft} alt="Previous" className="" />
-            </button>
-            <button className="bg-black backdrop-blur-sm text-white p-3 rounded hover:scale-80 transition-transform duration-300">
-              <img src={arrowRight} alt="Next" />
-            </button>
-          </div>
+      <div className="flex justify-center mb-10">
+        <div className="flex bg-white rounded-xl p-1 shadow-md">
+          <button className="px-6 py-2 rounded-lg bg-black text-white font-semibold">
+            Total
+          </button>
+          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+            Latest
+          </button>
+          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+            Best Seller
+          </button>
+          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+            Discount
+          </button>
         </div>
-        
       </div>
     </div>
   );

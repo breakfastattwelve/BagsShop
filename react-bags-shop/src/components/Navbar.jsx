@@ -21,7 +21,7 @@ function Navbar() {
 
           <ul className={`${toggle ? "flex" : "hidden"} flex flex-col md:flex md:flex-row my-5 font-semibold text-[18px]`}>
             <li className='my-2 md:mx-4'>
-              <a href="#">Home</a>
+              <a href="#">Products</a>
             </li>
             <li className='my-2 md:mx-4'>
               <a href="#">About</a>

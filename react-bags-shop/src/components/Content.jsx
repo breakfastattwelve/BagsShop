@@ -1,22 +1,34 @@
 import ProductCard from "./ProductCard";
 import products from "../data/products";
+import Loadmore from "./Loadmore";
+import Header from "./Header";
 
 function Content() {
   return (
-    <div className="bg-gray-50 py-14">
+    <div className="bg-gray-50 py-16">
       <div className="container mx-auto max-w-[1320px] relative h-auto px-4 lg:px-10">
 
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Our Products
-          </h2>
-          <p className="text-gray-600 text-lg">Discover our exclusive collection</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products.map((product) => (
-            <ProductCard className="" key={product.id} products={product}/>
+        <Header />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product, index) => (
+            <ProductCard 
+              key={product.id} 
+              products={product}  // แก้ให้ตรงกับที่ ProductCard รับ
+              className="
+                animate-fade-in-up
+                hover:ring-4 
+                hover:ring-blue-100 
+                hover:ring-opacity-50
+              "
+              style={{
+                animationDelay: `${index * 0.1}s`,
+              }}
+            />
           ))}
         </div>
+
+        <Loadmore />
 
       </div>
     </div>

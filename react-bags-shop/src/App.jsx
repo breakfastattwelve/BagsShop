@@ -1,7 +1,8 @@
 import './App.css'
 import Navbar from './components/Navbar'
-import Header from './components/Header'
+import Hero from './components/Hero'
 import Content from './components/Content'
+import Menu from './components/Menu'
 
 function App() {
 
@@ -9,8 +10,11 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Header/>
+      <Hero/>
       <Content/>
+      <Menu/>
+
+    
     </>
   )
 }
