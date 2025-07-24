@@ -1,9 +1,9 @@
-import bagHeader from "../assets/bag_header.png";
+import slide1 from "../assets/slide1.png";
 import arrowRight from "../assets/rightArrow.png";
 import arrowLeft from "../assets/leftArrow.png";
 
 
-function Header() {
+function Hero() {
   return (
     <div className="bg-white">
       <div className="container mx-auto max-w-[1320px] relative p-10">
@@ -11,7 +11,7 @@ function Header() {
         {/* Main Image */}
         <div className="relative w-full h-[500px] overflow-hidden rounded-xl">
           <img 
-            src={bagHeader} 
+            src={slide1} 
             alt="bagHeader" 
             className="w-full h-full object-cover"
           />
@@ -43,4 +43,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Hero;
