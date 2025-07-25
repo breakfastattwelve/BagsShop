@@ -9,9 +9,9 @@ function ProductModal({ isOpen, onClose, product }) {
       </div>
       <div className="absolute bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-70">
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="relative flex justify-center items-center p-6 border-b">
           <h2 className="text-2xl font-bold">รายละเอียดสินค้า</h2>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+          <button onClick={onClose} className="absolute right-6 p-2 hover:bg-gray-100 rounded-full">
             <VscClose className="w-6 h-6" />
           </button>
         </div>

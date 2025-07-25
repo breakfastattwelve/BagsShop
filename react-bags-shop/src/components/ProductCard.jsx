@@ -1,7 +1,7 @@
 import React from "react";
 import { VscHeart } from "react-icons/vsc";
 
-function ProductCard({products}) {
+function ProductCard({products, onProductClick}) {
   const {
     id,
     name,
@@ -16,7 +16,11 @@ function ProductCard({products}) {
   } = products;
 
   return (
-    <div id={id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100 hover:border-gray-200">
+    <div 
+      id={id} 
+      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100 hover:border-gray-200 cursor-pointer"
+      onClick={() => onProductClick(products)} // เพิ่ม onClick
+    >
       
       <div className="relative bg-gray-200 aspect-square overflow-hidden">
       <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 "/>
@@ -54,12 +58,13 @@ function ProductCard({products}) {
           </span>
         </div>
         <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-600 font-medium">Price :</span>
             <span className="text-2xl font-bold text-gray-900">฿{price.toLocaleString()}</span>
             <span className="text-xl text-gray-500 font-medium line-through">฿{originalPrice.toLocaleString()}</span>
         </div>
           {discount && (
             <div className="">
-              <span className="">Saved ฿{(originalPrice - price).toLocaleString()}</span>
+              <span className="text-sm text-gray-600 font-medium">Saved : ฿{(originalPrice - price).toLocaleString()}</span>
             </div>
           )}
 
@@ -85,22 +90,7 @@ function ProductCard({products}) {
         ">
           Add to cart
         </button>
-        <button className="
-          w-full 
-          border-2 
-          border-gray-300 
-          text-gray-700 
-          py-2 
-          px-6 
-          rounded-xl 
-          font-semibold 
-          hover:border-gray-900 
-          hover:text-gray-900 
-          transition-all 
-          duration-200
-        ">
-          See more details
-        </button>
+
 
       </div>
 

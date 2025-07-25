@@ -10,7 +10,8 @@ const products = [
         reviews: 124,
         discount: 25,
         isNew: false,
-        isBestSeller: true
+        isBestSeller: true,
+        details: "Crafted with premium vegan leather, this stylish tote bag is perfect for everyday essentials and weekend getaways"
     },
     {
         id: 2,
@@ -22,7 +23,8 @@ const products = [
         reviews: 89,
         discount: 20,
         isNew: true,
-        isBestSeller: false
+        isBestSeller: false,
+        details: "Sleek, minimal, and functional — a modern handbag that seamlessly blends fashion with practicality."
     },
     {
         id: 3,
@@ -34,7 +36,8 @@ const products = [
         reviews: 156,
         discount: 20,
         isNew: false,
-        isBestSeller: false
+        isBestSeller: false,
+        details: "Lightweight yet durable, this canvas shoulder bag is designed for daily adventures in the city."
     },
     {
         id: 4,
@@ -46,7 +49,8 @@ const products = [
         reviews: 67,
         discount: 15,
         isNew: true,
-        isBestSeller: true
+        isBestSeller: true,
+        details: "Featuring multiple compartments and a secure zip closure, this backpack is both chic and travel-ready."
     },
     {
         id: 5,
@@ -58,7 +62,8 @@ const products = [
         reviews: 98,
         discount: 20,
         isNew: false,
-        isBestSeller: false
+        isBestSeller: false,
+        details: "Add a touch of elegance to your outfit with this handcrafted crossbody bag, ideal for both day and night looks."
     },
     {
         id: 6,
@@ -70,7 +75,8 @@ const products = [
         reviews: 112,
         discount: 20,
         isNew: false,
-        isBestSeller: false
+        isBestSeller: false,
+        details: "Made to last with water-resistant material and adjustable straps, this bag is your perfect companion for busy days."
     }
 ];
 

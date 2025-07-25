@@ -10,8 +10,8 @@ const slides = [
     },
     {
       id: 2,
-      image: slide2, // นำเข้าจาก assets
-      title: "New\nCollection\n2024"
+      image: slide2,
+      title: "New\nCollection\n2025"
     },
 
   ];

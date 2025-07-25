@@ -13,8 +13,6 @@ function App() {
       <Hero/>
       <Content/>
       <Menu/>
-
-    
     </>
   )
 }

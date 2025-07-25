@@ -1,5 +1,13 @@
+// import { useState } from 'react';
+
 function Header() {
   return (
+    // const [selectedFilter, setSelectedFilter] = useState('Total');
+
+    // const handleFilterClick = (filter) => {
+    //     setSelectedFilter(filter);
+    // };
+
     <div>
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Products</h2>
