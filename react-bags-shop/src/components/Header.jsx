@@ -1,13 +1,9 @@
-// import { useState } from 'react';
+function Header({ onFilterChange, selectedFilter = 'Total' }) {
+  const handleFilterClick = (filter) => {
+    onFilterChange(filter);
+  };
 
-function Header() {
   return (
-    // const [selectedFilter, setSelectedFilter] = useState('Total');
-
-    // const handleFilterClick = (filter) => {
-    //     setSelectedFilter(filter);
-    // };
-
     <div>
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Products</h2>
@@ -19,16 +15,44 @@ function Header() {
 
       <div className="flex justify-center mb-10">
         <div className="flex bg-white rounded-xl p-1 shadow-md">
-          <button className="px-6 py-2 rounded-lg bg-black text-white font-semibold">
+          <button 
+            onClick={() => handleFilterClick('Total')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              selectedFilter === 'Total' 
+                ? 'bg-black text-white' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
             Total
           </button>
-          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+          <button 
+            onClick={() => handleFilterClick('Latest')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              selectedFilter === 'Latest' 
+                ? 'bg-black text-white' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
             Latest
           </button>
-          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+          <button 
+            onClick={() => handleFilterClick('Best Seller')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              selectedFilter === 'Best Seller' 
+                ? 'bg-black text-white' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
             Best Seller
           </button>
-          <button className="px-6 py-2 rounded-lg text-gray-600 hover:text-gray-900 font-semibold">
+          <button 
+            onClick={() => handleFilterClick('Discount')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              selectedFilter === 'Discount' 
+                ? 'bg-black text-white' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
             Discount
           </button>
         </div>

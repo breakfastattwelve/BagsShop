@@ -1,13 +1,23 @@
 import { VscClose } from 'react-icons/vsc';
+import { useCart } from '../hooks/useCart';
 
 function ProductModal({ isOpen, onClose, product }) {
+  const { addToCart, getItemQuantity, isInCart } = useCart();
+  
   if (!isOpen || !product) return null;
+
+  const handleAddToCart = () => {
+    addToCart(product.id);
+  };
+
+  const quantity = getItemQuantity(product.id);
+  const isProductInCart = isInCart(product.id);
 
   return (
     <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
       <div className="relative bg-gray-500 opacity-50 w-full h-full">
       </div>
-      <div className="absolute bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-70">
+      <div className="absolute bg-white rounded-2xl max-w-4xl w-full max-h-[70vh] md:max-h-[90vh] overflow-y-auto z-70">
         {/* Header */}
         <div className="relative flex justify-center items-center p-6 border-b">
           <h2 className="text-2xl font-bold">รายละเอียดสินค้า</h2>
@@ -19,7 +29,7 @@ function ProductModal({ isOpen, onClose, product }) {
         {/* Content */}
         <div className="p-6 grid md:grid-cols-2 gap-8">
           {/* รูปภาพ */}
-          <div className="aspect-square bg-gray-200 rounded-xl overflow-hidden">
+          <div className="w-60 h-60 aspect-square md:w-full md:h-full max-w-full mx-auto md:mx-0 bg-gray-200 rounded-xl overflow-hidden">
             <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
           </div>
           
@@ -33,8 +43,11 @@ function ProductModal({ isOpen, onClose, product }) {
             <p className="text-gray-600 text-lg">{product.details}</p>
             
             {/* เพิ่มปุ่ม Add to Cart */}
-            <button className="w-full bg-black text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-gray-800 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg hover:shadow-xl mt-15">
-              Add to Cart
+            <button 
+              onClick={handleAddToCart}
+              className="w-full bg-black text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-gray-800 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg hover:shadow-xl mt-15"
+            >
+              {isProductInCart ? `เพิ่มแล้ว (${quantity})` : 'Add to Cart'}
             </button>
           </div>
         </div>
