@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../hooks/useCart';
-import { useFavorite } from '../hooks/useFavorite';
 import ProductCard from './ProductCard';
 import ProductModal from './ProductModal';
 
@@ -12,7 +11,6 @@ const Search = () => {
     const [activeFilter, setActiveFilter] = useState('all');
     
     const { products } = useCart();
-    const { isFavorite } = useFavorite();
 
     // Filter options
     const filterOptions = [
@@ -156,7 +154,7 @@ const Search = () => {
 
             {/* Products Grid */}
             {filteredProducts.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-96 md:max-h-[70vh] overflow-y-auto">
+                <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-h-96 md:max-h-[70vh] overflow-y-auto">
                     {filteredProducts.map((product) => (
                         <ProductCard
                             key={product.id}

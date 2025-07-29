@@ -79,7 +79,7 @@ function PaymentModal({ isOpen, onClose, onPaymentComplete }) {
       </div>
 
       {/* Content */}
-      <div className="p-6 h-full overflow-y-auto">
+      <div className="p-6 h-full">
         {/* Order Summary */}
         <div className="mb-6 p-4 bg-gray-50 rounded-xl">
           <h3 className="text-lg font-semibold mb-3 text-gray-800">สรุปคำสั่งซื้อ</h3>
